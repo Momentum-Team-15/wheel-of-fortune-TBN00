@@ -27,13 +27,15 @@ def play_game():
     correct_guesses = []
     incorrect_guesses = []
     #show_board(word_to_guess)
-    new_guess = get_user_guess().upper()
-    if new_guess in word_to_guess:
-        correct_guesses.append(new_guess)
-    else:
-        incorrect_guesses.append(new_guess)
-    show_board(word_to_guess, game_board, correct_guesses)
-    print(f"Incorrect letters: {' '.join(incorrect_guesses)}")
+
+    while len(incorrect_guesses) < 8 and "_" in game_board:
+        new_guess = get_user_guess().upper()
+        if new_guess in word_to_guess:
+            correct_guesses.append(new_guess)
+        else:
+            incorrect_guesses.append(new_guess)
+        show_board(word_to_guess, game_board, correct_guesses)
+        print(f"Incorrect letters: {' '.join(incorrect_guesses)}")
 
 
 
