@@ -1,3 +1,5 @@
+import random
+
 def create_board(word):
     board_list = []
     for letter in word:
@@ -13,7 +15,7 @@ def show_board(word, board, correct_list):
     print(" ".join(board))
 
 def get_user_guess():
-    guess = input("Guess your letter: ")
+    guess = input("Guess a letter: ")
     return guess
 
 def play_game():
@@ -36,6 +38,11 @@ def play_game():
             incorrect_guesses.append(new_guess)
         show_board(word_to_guess, game_board, correct_guesses)
         print(f"Incorrect letters: {' '.join(incorrect_guesses)}")
+
+    if len(incorrect_guesses) == 8:
+        print("You LOSE!")
+    else:
+        print("You WIN!")
 
 
 
