@@ -19,10 +19,12 @@ def get_user_guess():
     return guess
 
 def play_game():
-    # computer picks a word at random from the list
-    # start with one word
-    # TODO pick word from list
-    word_to_guess = 'dream'.upper()
+    with open("words.txt", "r") as file:
+        allText = file.read()
+        words = list(map(str, allText.split()))
+
+        word_to_guess = (random.choice(words).upper())
+        
 
     # let user know length of secret word. make the board showing blanks for letters.
     game_board = create_board(word_to_guess)
@@ -41,6 +43,7 @@ def play_game():
 
     if len(incorrect_guesses) == 8:
         print("You LOSE!")
+        print(f"The word was {word_to_guess}")
     else:
         print("You WIN!")
 
